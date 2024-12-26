@@ -1,14 +1,39 @@
 package hianime
 
-type Scraper struct{}
+import (
+	"github.com/DaioEnma/enma.go/src/util"
+	"github.com/go-resty/resty/v2"
+	"github.com/gocolly/colly/v2"
+)
 
-const DOMAIN string = "hianime.to"
+type Scraper struct {
+	colly  *colly.Collector
+	client *resty.Client
+}
+
+func New() *Scraper {
+	return &Scraper{
+		colly: colly.NewCollector(
+			colly.AllowedDomains(domain),
+		),
+		client: resty.New().
+			SetBaseURL(src_base_url).
+			SetHeaders(map[string]string{
+				"Referer":         src_base_url + src_home_path,
+				"Accept":          util.ACCEPT_HEADER,
+				"User-Agent":      util.USER_AGENT_HEADER,
+				"Accept-Encoding": util.ACCEPT_ENCODING_HEADER,
+			}),
+	}
+}
+
+const domain string = "hianime.to"
 
 const (
-	SRC_BASE_URL   string = "https://" + DOMAIN
-	SRC_AJAX_URL          = SRC_BASE_URL + "/ajax"
-	SRC_HOME_URL          = SRC_BASE_URL + "/home"
-	SRC_SEARCH_URL        = SRC_BASE_URL + "/search"
+	src_base_url    string = "https://" + domain
+	src_home_path   string = "/home"
+	src_ajax_path   string = "/ajax"
+	src_search_path string = "/search"
 )
 
 type searchPageFilters struct {
