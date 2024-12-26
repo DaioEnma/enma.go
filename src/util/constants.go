@@ -1,4 +1,4 @@
-package utils
+package util
 
 const (
 	ACCEPT_ENCODING_HEADER string = "gzip, deflate, br"
