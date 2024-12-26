@@ -6,7 +6,7 @@ import (
 )
 
 func NewHiAnime() *hianime.Scraper {
-	return &hianime.Scraper{}
+	return hianime.New()
 }
 
 func NewMangaReader() *mangareader.Scraper {
