@@ -1,14 +1,14 @@
 package enma
 
 import (
-	"github.com/DaioEnma/enma.go/src/providers/anime/hianime"
-	"github.com/DaioEnma/enma.go/src/providers/manga/mangareader"
+	"github.com/DaioEnma/enma.go/internal/anime/hianime"
+	"github.com/DaioEnma/enma.go/internal/manga/mangareader"
 )
 
-func NewHiAnime() *hianime.Scraper {
-	return hianime.New()
-}
+// anime exports
 
-func NewMangaReader() *mangareader.Scraper {
-	return &mangareader.Scraper{}
-}
+var HiAnime = hianime.Export
+
+// manga exports
+
+var MangaReader = mangareader.Export

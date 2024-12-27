@@ -1,7 +1,7 @@
 package hianime
 
 import (
-	"github.com/DaioEnma/enma.go/src/util"
+	"github.com/DaioEnma/enma.go/internal/util"
 	"github.com/go-resty/resty/v2"
 	"github.com/gocolly/colly/v2"
 )
